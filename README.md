@@ -28,5 +28,24 @@ Generally I would create something like this in an MVC framework such as Laravel
 <strong>database.php</strong> - handles the creation of a sqlite3 database, the creation of the weather table and inserting weather data to the DB. I chose sqlite3 as my storage mechanism because it's file based and requires no setup on your part.<br><br>
 <strong>index.php</strong> - is a quick one off that hits the API and stores the results to the DB as well as displaying the data retrieved.<br><br>
 <strong>scheduler.php</strong> - generally I would use a cron job to run the script every hour. But that would have required you to set up the job on your server. Instead I simulated a cron using sleep(). The request interval is set in config.php.<br><br>
-<strong>tests/test.php</strong> - contains a test suite for the application.  I set up tests to ensure the database exists, that all the required classes exist along with their properties and methods, that the API call is returning data and contains all the needed array keys, and that the database insert is working properly. I'm fairly new to TDD but I learn quickly. <br><br> 
+<strong>tests/test.php</strong> - contains a phpunit test suite for the application.  I set up tests to ensure the database exists, that all the required classes exist along with their properties and methods, that the API call is returning data and contains all the needed array keys, and that the database insert is working properly. I'm fairly new to TDD but I learn quickly. <br><br>
+
+If you need to install phpunit you can run:<br>
+composer update<br>
+in the directory of the project.<br><br>
+
+To run the application just cd to the project directory and run: <br>
+YOUR_PATH_TO_PHP index.php <br>
+for a one off or: <br>
+YOUR_PATH_TO_PHP scheduler.php <br>
+for the timed script. <br><br>
+
+For the tests, you can just run: <br>
+phpunit <br>
+in the project directory.<br><br>
+
+Of there are always thing that I'd like to refactor but given the time constraint I think I've met the criteria of the challenge. <br><br>
+
+Have a great day!<br>
+Dan
 </p>
