@@ -39,6 +39,7 @@ YOUR_PATH_TO_PHP index.php <br>
 for a one off or: <br>
 YOUR_PATH_TO_PHP scheduler.php <br>
 for the timed script. <br>
+Ctrl + Z will end the script.<br>
 
 For the tests, you can just run: <br>
 phpunit <br>
