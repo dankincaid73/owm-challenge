@@ -1,13 +1,12 @@
 <?php
-/**
-* API owmRequest class.
-* @author Dan Kincaid <dankincaid73@gmail.com>
-*/
+
+// API owmRequest class.
+//@author Dan Kincaid <dankincaid73@gmail.com>
 class owmRequest
 {
   // These would usually be saved to a .env file but I wanted this
   // to be easy for you guys to just download and run
-  
+
   // Open Weather Map Web Address
   const URL = 'http://api.openweathermap.org/data/2.5/weather';
   // Open Weather Map API Key
@@ -19,10 +18,8 @@ class owmRequest
   private $parameters = [];
   private $responseArray = [];
 
-  /**
-  * Constructor
-  * Sets APPID and Response Unit
-  */
+
+  //Constructor Sets APPID and Response Unit
 	public function __construct ()
 	{
     // Set APPID
@@ -31,12 +28,7 @@ class owmRequest
     $this->parameters['units'] = self::UNIT;
 	}
 
-  /**
-  * API Fetch Method
-  * @param array $queryString
-  * @return $this
-  * @throws \ErrorException
-  */
+  //API Fetch Method
 	public function fetchOwmRequest (array $queryString = [])
 	{
     // Concatenate URL, make request and return the response
@@ -64,10 +56,8 @@ class owmRequest
 		return $this;
 	}
 
-  /**
-  * Method for returning the JSON Response
-  * @return string
-  */
+
+  //Method for returning the JSON Response
 	public function getResponseJSON ()
 	{
 		return $this->responseJSON;
