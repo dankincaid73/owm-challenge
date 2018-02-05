@@ -1,7 +1,8 @@
 <?php
-
-// API owmRequest class.
-//@author Dan Kincaid <dankincaid73@gmail.com>
+/**
+* API owmRequest class.
+* @author Dan Kincaid <dankincaid73@gmail.com>
+*/
 class owmRequest
 {
   // These would usually be saved to a .env file but I wanted this
@@ -18,21 +19,28 @@ class owmRequest
   private $parameters = [];
   private $responseArray = [];
 
-
-  //Constructor Sets APPID and Response Unit
-	public function __construct ()
-	{
+  /**
+  * Constructor
+  * Sets APPID and Response Unit
+  */
+  public function __construct ()
+  {
     // Set APPID
     $this->parameters['appid'] = self::API_KEY;
     // Set the response unit
     $this->parameters['units'] = self::UNIT;
-	}
+  }
 
-  //API Fetch Method
-	public function fetchOwmRequest (array $queryString = [])
-	{
+  /**
+  * API Fetch Method
+  * @param array $queryString
+  * @return $this
+  * @throws \ErrorException
+  */
+  public function fetchOwmRequest (array $queryString = [])
+  {
     // Concatenate URL, make request and return the response
-		$this->responseJSON = file_get_contents(self::URL . '?' .
+    $this->responseJSON = file_get_contents(self::URL . '?' .
     http_build_query(($this->parameters + $queryString), null, '&'));
 
     // Convert JSON to Array
@@ -40,26 +48,28 @@ class owmRequest
 
     // Check for valid array
     if (!is_array($this->responseArray))
-		{
-			throw new \ErrorException('The Open Weather Map API response
-      returned no valid JSON: ' . $this->responseJSON);
-		}
+    {
+    throw new \ErrorException('The Open Weather Map API response
+    returned no valid JSON: ' . $this->responseJSON);
+    }
 
     // Check for errors
-		if (isset($this->responseArray['response']['error']))
-		{
-			throw new \ErrorException('The Open Weather Map API
-      responded with errors: ' .
-      var_export($this->responseArray['response']['error'], true));
-		}
+    if (isset($this->responseArray['response']['error']))
+    {
+    throw new \ErrorException('The Open Weather Map API
+    responded with errors: ' .
+    var_export($this->responseArray['response']['error'], true));
+  }
 
-		return $this;
-	}
+    return $this;
+  }
 
-
-  //Method for returning the JSON Response
-	public function getResponseJSON ()
-	{
-		return $this->responseJSON;
-	}
+  /**
+  * Method for returning the JSON Response
+  * @return string
+  */
+  public function getResponseJSON ()
+  {
+    return $this->responseJSON;
+  }
 }
