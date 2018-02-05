@@ -94,7 +94,6 @@ class owmTest extends \PHPUnit_Framework_TestCase
     // Check that required array keys exist
     $this->assertArrayHasKey('main', $this->weatherArray['weather'][0]);
     $this->assertArrayHasKey('speed', $this->weatherArray['wind']);
-    $this->assertArrayHasKey('deg', $this->weatherArray['wind']);
     $this->assertArrayHasKey('pressure', $this->weatherArray['main']);
     $this->assertArrayHasKey('temp', $this->weatherArray['main']);
     $this->assertArrayHasKey('humidity', $this->weatherArray['main']);
